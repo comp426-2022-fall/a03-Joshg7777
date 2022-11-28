@@ -1,19 +1,13 @@
 #!/usr/bin/env node
 
-// import statements
-import minimist from 'minimist';
+import minimist from "minimist";
 import {roll} from "../lib/roll.js";
 
-// parse command line arguments
-const args = minimist(process.argv.slice(2))
+const args = minimist(process.argv.slice(2));
 
-let sides = args.sides;
-let dice = args.dice;
-let rolls = args.rolls;
-if(sides < 0 || dice < 0 || rolls < 0){
-    console.log("Please enter positive numbers");
-    process.exit(1);
-}
-let returnedObject = roll(sides, dice, rolls);
-console.log(returnedObject);
+const sides = args.sides || 6;
+const dice = args.dice || 2;
+const roll = args.rolls || 1;
+
+console.log(roll(sides,dice,rolls));
 process.exit(0);
